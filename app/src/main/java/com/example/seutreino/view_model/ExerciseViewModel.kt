@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.seutreino.model.entities.Exercise
-import com.example.seutreino.model.repository.IExercisesRepository
+import com.example.seutreino.model.repositories.interface_repository.IExercisesRepository
 
 class ExerciseViewModel(
     private val repository: IExercisesRepository
