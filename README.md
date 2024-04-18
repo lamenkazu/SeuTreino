@@ -49,3 +49,5 @@
 - [ ] Ao criar um treino, o usuário deve selecionar pelo menos um exercício da biblioteca de exercícios.
 - [ ] A quantidade de exercícios por treino não é limitada.
 
+## Organização
+![img.png](img.png)
