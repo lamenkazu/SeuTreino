@@ -1,4 +1,4 @@
-package com.example.seutreino
+package com.example.seutreino.view
 
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.seutreino.R
 import com.example.seutreino.databinding.ActivityMainBinding
-import com.example.seutreino.exercise.ExerciseListingFragment
-import com.example.seutreino.workout.WorkoutListingFragment
+import com.example.seutreino.view.exercise.ExerciseListingFragment
+import com.example.seutreino.view.workout.WorkoutListingFragment
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {

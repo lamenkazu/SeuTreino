@@ -1,4 +1,4 @@
-package com.example.seutreino.workout
+package com.example.seutreino.view.exercise
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.seutreino.R
-import com.example.seutreino.databinding.FragmentExerciseListingBinding
-import com.example.seutreino.databinding.FragmentWorkoutListingBinding
+import com.example.seutreino.databinding.FragmentExerciseDetailBinding
 
-class WorkoutListingFragment : Fragment() {
+class ExerciseDetailFragment : Fragment() {
 
-    val TAG: String = "WorkoutListingFragment"
-    lateinit var binding: FragmentWorkoutListingBinding
+    val TAG: String = "ExerciseDetailFragment"
+    lateinit var binding: FragmentExerciseDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       binding = FragmentWorkoutListingBinding.inflate(layoutInflater)
+
+        binding = FragmentExerciseDetailBinding.inflate(layoutInflater)
 
         return binding.root
     }

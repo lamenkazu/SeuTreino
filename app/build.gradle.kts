@@ -55,6 +55,9 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
+    //LiveData
+    implementation(libs.androidx.lifecycle.livedata)
+
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation(libs.firebase.firestore)
