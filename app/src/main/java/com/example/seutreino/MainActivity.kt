@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +19,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        Log.d("Teste", "Hello Android")
+        val user: MutableMap<String, Any> = HashMap()
+        user["first"]= "Erick Etiene"
+        user["last"]= "Simião Ferreira"
+        user["born"]= 1999
+
+        FirebaseFirestore.getInstance().collection("users")
+            .add(user)
+            .addOnSuccessListener {
+                Log.d("FirebaseTag", "DocumentSnapshot adicionado com ID:" + it.id)
+            }
+            .addOnFailureListener{
+                Log.d("FirebaseTag", "Erro adicionando documento:$it")
+
+            }
     }
 }
