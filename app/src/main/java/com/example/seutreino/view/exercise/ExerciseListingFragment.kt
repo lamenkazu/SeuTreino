@@ -1,6 +1,7 @@
 package com.example.seutreino.view.exercise
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,9 @@ import com.example.seutreino.R
 import com.example.seutreino.databinding.FragmentExerciseDetailBinding
 import com.example.seutreino.databinding.FragmentExerciseListingBinding
 import com.example.seutreino.view_model.ExerciseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExerciseListingFragment : Fragment() {
 
     val TAG: String = "ExerciseListingFragment"
@@ -33,9 +36,11 @@ class ExerciseListingFragment : Fragment() {
 
         viewModel.getExercises()
 
-        viewModel.exercises.observe(viewLifecycleOwner, {
-
-        })
+        viewModel.exercises.observe(viewLifecycleOwner){
+            it.forEach{exercise ->
+                Log.d(TAG, exercise.toString())
+            }
+        }
 
     }
 }

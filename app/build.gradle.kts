@@ -2,6 +2,11 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
+
+    id ("kotlin-kapt")
+
+    id ("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -20,6 +25,10 @@ android {
 
     buildFeatures{
         viewBinding = true
+    }
+
+    kapt {
+        correctErrorTypes = true
     }
 
     buildTypes {
@@ -47,9 +56,15 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+//    annotationProcessor ("com.google.dagger:hilt-compiler:2.51.1")
 
     //Jetpack Navigation Component
     implementation(libs.androidx.navigation.fragment.ktx)

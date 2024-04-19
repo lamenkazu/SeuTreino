@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.example.seutreino.R
 import com.example.seutreino.databinding.FragmentExerciseListingBinding
 import com.example.seutreino.databinding.FragmentWorkoutListingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WorkoutListingFragment : Fragment() {
 
     val TAG: String = "WorkoutListingFragment"
