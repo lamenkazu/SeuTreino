@@ -12,7 +12,9 @@ import com.example.seutreino.databinding.ActivityMainBinding
 import com.example.seutreino.view.exercise.ExerciseListingFragment
 import com.example.seutreino.view.workout.WorkoutListingFragment
 import com.google.firebase.firestore.FirebaseFirestore
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -41,20 +43,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        val user: MutableMap<String, Any> = HashMap()
-        user["first"]= "Erick Etiene"
-        user["last"]= "Simião Ferreira"
-        user["born"]= 1999
 
-        FirebaseFirestore.getInstance().collection("users")
-            .add(user)
-            .addOnSuccessListener {
-                Log.d("FirebaseTag", "DocumentSnapshot adicionado com ID:" + it.id)
-            }
-            .addOnFailureListener{
-                Log.d("FirebaseTag", "Erro adicionando documento:$it")
-
-            }
     }
 
     private fun replaceFragment(fragment: Fragment){

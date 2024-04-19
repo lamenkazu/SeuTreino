@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.seutreino.model.entities.Exercise
 import com.example.seutreino.model.repositories.interface_repository.IExercisesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ExerciseViewModel(
+@HiltViewModel
+class ExerciseViewModel @Inject constructor(
     private val repository: IExercisesRepository
 ): ViewModel() {
 
