@@ -9,5 +9,5 @@ data class Workout(
     val description: String,
     @ServerTimestamp
     val date: Date,
-    val exercises: List<String>
+    val exercisesIds: List<String>
 )

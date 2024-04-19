@@ -23,12 +23,12 @@ object RepositoryModule {
         return FirebaseExercisesRepository(database)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideWorkoutsRepository(
-//        database: FirebaseFirestore
-//    ): IWorkoutsRepository{
-//        return FirebaseWorkoutRepository(database)
-//    }
+    @Provides
+    @Singleton
+    fun provideWorkoutsRepository(
+        database: FirebaseFirestore
+    ): IWorkoutsRepository{
+        return FirebaseWorkoutRepository(database)
+    }
 
 }
