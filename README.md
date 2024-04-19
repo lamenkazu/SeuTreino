@@ -46,8 +46,9 @@
 
 
 ## Regras de negócio
+- [ ] Não deve ser possível criar um treino sem a existência de exercícios.
 - [ ] Ao criar um treino, o usuário deve selecionar pelo menos um exercício da biblioteca de exercícios.
-- [ ] A quantidade de exercícios por treino não é limitada.
+- [ ] A quantidade de exercícios por treino é limitada (5 exercícios por treino).
 
 ## Organização
 ![img.png](img.png)

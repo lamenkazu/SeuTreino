@@ -1,6 +1,7 @@
 package com.example.seutreino.model.repositories.firebase_repository
 
 import com.example.seutreino.model.entities.Workout
+import com.example.seutreino.model.entities.value_objects.ExerciseWithDuration
 import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRepository
 import com.example.seutreino.util.UiState
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,14 +17,20 @@ class FirebaseWorkoutRepository(
                 name="Superior",
                 description="Trabalhar membros superiores",
                 date=Date(),
-                exercisesIds = arrayListOf("1", "2", "3")
+                exercises = arrayListOf(
+                    ExerciseWithDuration(exerciseId = "1", durationInSeconds = 30),
+                    ExerciseWithDuration(exerciseId = "2", durationInSeconds = 30),
+                )
             ),
             Workout(
                 id="123456",
                 name="Inferior",
                 description="Trabalhar membros inferiores",
                 date=Date(),
-                exercisesIds = arrayListOf("1", "2", "3")
+                exercises = arrayListOf(
+                    ExerciseWithDuration(exerciseId = "1", durationInSeconds = 30),
+                    ExerciseWithDuration(exerciseId = "2", durationInSeconds = 30),
+                )
             ),
         )
 
