@@ -13,6 +13,12 @@
         android:icon="@drawable/baseline_fitness_center_24"
         />
     <item
+        app:showAsAction="always"
+        android:id="@+id/workout_history"
+        android:title="@string/history_nav_title"
+        android:icon="@drawable/baseline_history_24"
+        />
+    <item
         android:id="@+id/settings"
         android:title="@string/settings_nav_title"
         android:icon="@drawable/settings_black_24dp"

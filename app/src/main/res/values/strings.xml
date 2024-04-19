@@ -5,6 +5,7 @@
 
     <string name="workout_nav_title">Workouts</string>
     <string name="exercise_nav_title">Exercises</string>
+    <string name="history_nav_title">History</string>
     <string name="settings_nav_title">Settings</string>
 
 </resources>

@@ -5,9 +5,9 @@ import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRe
 import com.example.seutreino.util.UiState
 
 
-class InMemoryWorkoutsRepository: IWorkoutsRepository {
-    override fun getWorkouts(): UiState<List<Workout>> {
-        TODO("Not yet implemented")
-    }
-
-}
+//class InMemoryWorkoutsRepository: IWorkoutsRepository {
+//    override fun getWorkouts(): UiState<List<Workout>> {
+//        TODO("Not yet implemented")
+//    }
+//
+//}

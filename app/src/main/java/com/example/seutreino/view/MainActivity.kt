@@ -7,9 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.seutreino.R
 import com.example.seutreino.databinding.ActivityMainBinding
 import com.example.seutreino.view.exercise.ExerciseListingFragment
+import com.example.seutreino.view.workout.WorkoutHistoryFragment
 import com.example.seutreino.view.workout.WorkoutListingFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +41,8 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.workout -> replaceFragment(WorkoutListingFragment())
                 R.id.exercise -> replaceFragment(ExerciseListingFragment())
-//                R.id.settings -> replaceFragment(Settings())
+                R.id.workout_history -> replaceFragment(WorkoutHistoryFragment())
+                R.id.settings -> replaceFragment(SettingsFragment())
                 else -> {}
             }
             true
