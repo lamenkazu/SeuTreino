@@ -1,16 +1,18 @@
 package com.example.seutreino.view.exercise
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.seutreino.R
-import com.example.seutreino.databinding.FragmentExerciseDetailBinding
 import com.example.seutreino.databinding.FragmentExerciseListingBinding
 import com.example.seutreino.util.UiState
+import com.example.seutreino.util.hide
+import com.example.seutreino.util.show
+import com.example.seutreino.util.toast
 import com.example.seutreino.view_model.ExerciseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,12 +23,31 @@ class ExerciseListingFragment : Fragment() {
     lateinit var binding: FragmentExerciseListingBinding
 
     val viewModel: ExerciseViewModel by viewModels()
+    val adapter by lazy{
+        ExerciseListingAdapter(
+            onItemClicked = {pos, item ->
+
+            },
+            onEditClicked = {pos, item ->
+
+            },
+            onDeleteClicked = {pos, item ->
+
+            }
+        )
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+
         binding = FragmentExerciseListingBinding.inflate(layoutInflater)
+
+        binding.addExerciseButton.setOnClickListener {view ->
+            view.findNavController().navigate(R.id.action_exerciseListingFragment_to_exerciseDetailFragment)
+        }
 
         return binding.root
     }
@@ -35,23 +56,27 @@ class ExerciseListingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.exerciseList.adapter = adapter
+
+
         viewModel.getExercises()
 
         viewModel.exercises.observe(viewLifecycleOwner){state ->
             when(state){
                 is UiState.Loading -> {
-                    Log.d(TAG, "Loading")
+                    binding.progressBar.show()
 
                 }
 
                 is UiState.Failure -> {
-                    Log.e(TAG, state.error.toString())
+                    binding.progressBar.hide()
+                    toast(state.error.toString())
                 }
 
                 is UiState.Success -> {
-                    state.data.forEach{
-                        Log.d(TAG, it.toString())
-                    }
+                    binding.progressBar.hide()
+
+                    adapter.updateList(state.data.toMutableList())
                 }
             }
         }

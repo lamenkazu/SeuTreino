@@ -1,6 +1,5 @@
 package com.example.seutreino.view_model
 
-import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,13 +17,24 @@ class ExerciseViewModel @Inject constructor(
     private val _exercises = MutableLiveData<UiState<List<Exercise>>>()
     val exercises: LiveData<UiState<List<Exercise>>> get() = _exercises
 
+    private val _addExercise = MutableLiveData<UiState<String>>()
+    val addExercise: LiveData<UiState<String>> get() = _addExercise
+
+
     fun getExercises(){
         _exercises.value = UiState.Loading
 
-        //2 segundos para simular o delay de informações do BD
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
-            _exercises.value = repository.getExercises()
-        }, 2000)
+        repository.getExercises {
+            _exercises.value = it
+        }
+
+    }
+
+    fun addExercise(exercise: Exercise){
+        _addExercise.value = UiState.Loading
+        repository.addExercise(exercise){
+            _addExercise.value = it
+        }
 
     }
 

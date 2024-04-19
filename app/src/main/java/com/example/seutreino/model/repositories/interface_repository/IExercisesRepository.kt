@@ -4,7 +4,8 @@ import com.example.seutreino.model.entities.Exercise
 import com.example.seutreino.util.UiState
 
 interface IExercisesRepository {
+    fun getExercises(result: (UiState<List<Exercise>>) -> Unit)
 
-    fun getExercises(): UiState<List<Exercise>>
+    fun addExercise(exercise: Exercise, result: (UiState<String>) -> Unit)
 
 }
