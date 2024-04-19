@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.example.seutreino.R
 import com.example.seutreino.databinding.FragmentExerciseListingBinding
 import com.example.seutreino.databinding.FragmentWorkoutListingBinding
+import com.example.seutreino.util.UiState
 import com.example.seutreino.view_model.ExerciseViewModel
 import com.example.seutreino.view_model.WorkoutViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,11 +37,24 @@ class WorkoutListingFragment : Fragment() {
 
         viewModel.getWorkouts()
 
-        viewModel.exercises.observe(viewLifecycleOwner){
-            it.forEach{workout ->
-                Log.d(TAG, workout.toString())
+        viewModel.exercises.observe(viewLifecycleOwner){state ->
+            when(state){
+                is UiState.Loading -> {
+                    Log.d(TAG, "Loading")
 
+                }
+
+                is UiState.Failure -> {
+                    Log.e(TAG, state.error.toString())
+                }
+
+                is UiState.Success -> {
+                    state.data.forEach{
+                        Log.d(TAG, it.toString())
+                    }
+                }
             }
+
         }
 
     }
