@@ -8,4 +8,11 @@
     <string name="history_nav_title">History</string>
     <string name="settings_nav_title">Settings</string>
 
+
+    <string name="exercise_name">Exercise name</string>
+    <string name="observations">Observations</string>
+    <string name="send_exercise">Save Exercise</string>
+
+
+
 </resources>

@@ -1,13 +1,14 @@
 package com.example.seutreino.view.exercise
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
-import com.example.seutreino.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seutreino.databinding.FragmentExerciseListingBinding
 import com.example.seutreino.util.UiState
 import com.example.seutreino.util.hide
@@ -27,6 +28,7 @@ class ExerciseListingFragment : Fragment() {
         ExerciseListingAdapter(
             onItemClicked = {pos, item ->
 
+
             },
             onEditClicked = {pos, item ->
 
@@ -45,19 +47,22 @@ class ExerciseListingFragment : Fragment() {
 
         binding = FragmentExerciseListingBinding.inflate(layoutInflater)
 
-        binding.addExerciseButton.setOnClickListener {view ->
-            view.findNavController().navigate(R.id.action_exerciseListingFragment_to_exerciseDetailFragment)
+        binding.addExerciseButton.setOnClickListener {
+            val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
+                putExtra("local", "add")
+            }
+            startActivity(intent)
         }
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState:  Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
         binding.exerciseList.adapter = adapter
-
+        binding.exerciseList.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel.getExercises()
 
@@ -75,6 +80,8 @@ class ExerciseListingFragment : Fragment() {
 
                 is UiState.Success -> {
                     binding.progressBar.hide()
+
+                    Log.d(TAG, state.data.toString())
 
                     adapter.updateList(state.data.toMutableList())
                 }

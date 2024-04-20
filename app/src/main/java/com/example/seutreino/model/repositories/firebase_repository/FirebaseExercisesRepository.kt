@@ -36,11 +36,15 @@ class FirebaseExercisesRepository(
     }
 
     override fun addExercise(exercise: Exercise, result: (UiState<String>) -> Unit) {
-        database.collection(FirestoreTables.EXERCISES)
-            .add(exercise)
+
+        val document = database.collection(FirestoreTables.EXERCISES).document()
+
+        exercise.id = document.id
+
+        document.set(exercise)
             .addOnSuccessListener {
                 result.invoke(
-                    UiState.Success(it.id)
+                    UiState.Success("Note has been created.")
                 )
             }
             .addOnFailureListener{
