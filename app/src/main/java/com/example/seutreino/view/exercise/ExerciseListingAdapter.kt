@@ -47,7 +47,7 @@ class ExerciseListingAdapter(
             binding.exerciseObservations.text = item.observations
             binding.editButton.setOnClickListener{onEditClicked.invoke(adapterPosition, item)}
             binding.deleteButton.setOnClickListener{onDeleteClicked.invoke(adapterPosition, item)}
-            binding.itemLayout.setOnClickListener{onItemClicked.invoke(adapterPosition, item)}
+            binding.exerciseItemLayout.setOnClickListener{onItemClicked.invoke(adapterPosition, item)}
         }
     }
 }

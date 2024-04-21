@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.seutreino.databinding.FragmentWorkoutDetailBinding
+import com.example.seutreino.databinding.FragmentAddWorkoutBinding
 
-class WorkoutDetailFragment : Fragment() {
+class AddWorkoutFragment : Fragment() {
 
-    private var _binding: FragmentWorkoutDetailBinding? = null
+    private var _binding: FragmentAddWorkoutBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -21,7 +21,7 @@ class WorkoutDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentWorkoutDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentAddWorkoutBinding.inflate(inflater, container, false)
         return binding.root
 
     }

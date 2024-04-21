@@ -8,7 +8,5 @@ data class Workout(
     val id: String,
     val name: String,
     val description: String,
-    @ServerTimestamp
-    val date: Date,
     val exercises: List<ExerciseWithDuration>
 )

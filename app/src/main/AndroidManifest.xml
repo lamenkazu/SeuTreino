@@ -17,6 +17,10 @@
         android:theme="@style/Theme.SeuTreino"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".view.workout.WorkoutActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SeuTreino" />
+        <activity
             android:name=".view.exercise.ExerciseActivity"
             android:exported="false"
             android:theme="@style/Theme.SeuTreino" />

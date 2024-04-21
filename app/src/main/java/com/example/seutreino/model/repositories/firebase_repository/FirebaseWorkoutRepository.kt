@@ -16,7 +16,6 @@ class FirebaseWorkoutRepository(
                 id="123456",
                 name="Superior",
                 description="Trabalhar membros superiores",
-                date=Date(),
                 exercises = arrayListOf(
                     ExerciseWithDuration(exerciseId = "1", durationInSeconds = 30),
                     ExerciseWithDuration(exerciseId = "2", durationInSeconds = 30),
@@ -26,7 +25,6 @@ class FirebaseWorkoutRepository(
                 id="123456",
                 name="Inferior",
                 description="Trabalhar membros inferiores",
-                date=Date(),
                 exercises = arrayListOf(
                     ExerciseWithDuration(exerciseId = "1", durationInSeconds = 30),
                     ExerciseWithDuration(exerciseId = "2", durationInSeconds = 30),
