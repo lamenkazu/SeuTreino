@@ -8,6 +8,7 @@ interface IExercisesRepository {
     fun getExerciseById(exerciseId: String, result: (UiState<Exercise>) -> Unit)
     fun addExercise(exercise: Exercise, result: (UiState<String>) -> Unit)
     fun updateExercise(exercise: Exercise, result: (UiState<String>) -> Unit)
+    fun deleteExercise(exercise: Exercise, result: (UiState<String>) -> Unit)
 
 
 }

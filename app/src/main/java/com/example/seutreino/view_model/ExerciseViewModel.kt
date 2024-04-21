@@ -26,6 +26,9 @@ class ExerciseViewModel @Inject constructor(
     private val _updateExercise = MutableLiveData<UiState<String>>()
     val updateExercise: LiveData<UiState<String>> get() = _updateExercise
 
+    private val _deleteExercise = MutableLiveData<UiState<String>>()
+    val deleteExercise: LiveData<UiState<String>> get() = _deleteExercise
+
 
     fun getExercises(){
         _exercises.value = UiState.Loading
@@ -60,6 +63,13 @@ class ExerciseViewModel @Inject constructor(
             _updateExercise.value = it
         }
 
+    }
+
+    fun deleteExercise(exercise: Exercise) {
+        _deleteExercise.value = UiState.Loading
+        repository.deleteExercise(exercise){
+            _deleteExercise.value = it
+        }
     }
 
 }

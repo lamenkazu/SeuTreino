@@ -96,4 +96,22 @@ class FirebaseExercisesRepository(
                 )
             }
     }
+
+    override fun deleteExercise(exercise: Exercise, result: (UiState<String>) -> Unit) {
+        val document = database.collection(FirestoreTables.EXERCISES).document(exercise.id)
+
+        document.delete()
+            .addOnSuccessListener {
+                result.invoke(
+                    UiState.Success("Note has been deleted.")
+                )
+            }
+            .addOnFailureListener{
+                result.invoke(
+                    UiState.Failure(
+                        it.localizedMessage
+                    )
+                )
+            }
+    }
 }

@@ -23,10 +23,12 @@ class ExerciseListingFragment : Fragment() {
     val TAG: String = "ExerciseListingFragment"
     lateinit var binding: FragmentExerciseListingBinding
 
+    private var deleteExercisePosition: Int = -1
+
     val viewModel: ExerciseViewModel by viewModels()
     val adapter by lazy{
         ExerciseListingAdapter(
-            onItemClicked = {pos, item ->
+            onItemClicked = {_, item ->
                 val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
                     putExtra("ExerciseId", item.id)
                     putExtra("edit", false)
@@ -35,7 +37,7 @@ class ExerciseListingFragment : Fragment() {
                 startActivity(intent)
 
             },
-            onEditClicked = {pos, item ->
+            onEditClicked = {_, item ->
                 val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
                     putExtra("ExerciseId", item.id)
                     putExtra("edit", true)
@@ -44,7 +46,8 @@ class ExerciseListingFragment : Fragment() {
                 startActivity(intent)
             },
             onDeleteClicked = {pos, item ->
-
+                viewModel.deleteExercise(item)
+                deleteExercisePosition = pos
             }
         )
     }
@@ -73,6 +76,32 @@ class ExerciseListingFragment : Fragment() {
 
         binding.exerciseList.adapter = adapter
         binding.exerciseList.layoutManager = LinearLayoutManager(requireContext())
+
+        viewModel.deleteExercise.observe(viewLifecycleOwner){state ->
+            when(state){
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+
+                }
+
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error.toString())
+                }
+
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+
+                    toast(state.data)
+
+                    if(deleteExercisePosition != -1){
+                        adapter.removeItem(deleteExercisePosition)
+
+                    }
+
+                }
+            }
+        }
 
 
     }
