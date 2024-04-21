@@ -30,6 +30,7 @@ class ExerciseListingFragment : Fragment() {
                 val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
                     putExtra("ExerciseId", item.id)
                     putExtra("edit", false)
+                    putExtra("local", "edit")
                 }
                 startActivity(intent)
 
@@ -38,6 +39,7 @@ class ExerciseListingFragment : Fragment() {
                 val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
                     putExtra("ExerciseId", item.id)
                     putExtra("edit", true)
+                    putExtra("local", "edit")
                 }
                 startActivity(intent)
             },
@@ -55,6 +57,12 @@ class ExerciseListingFragment : Fragment() {
 
         binding = FragmentExerciseListingBinding.inflate(layoutInflater)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState:  Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.addExerciseButton.setOnClickListener {
             val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
                 putExtra("local", "add")
@@ -62,16 +70,19 @@ class ExerciseListingFragment : Fragment() {
             startActivity(intent)
         }
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState:  Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
 
         binding.exerciseList.adapter = adapter
         binding.exerciseList.layoutManager = LinearLayoutManager(requireContext())
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        observeList()
+    }
+
+    private fun observeList(){
         viewModel.getExercises()
 
         viewModel.exercises.observe(viewLifecycleOwner){state ->
@@ -95,6 +106,5 @@ class ExerciseListingFragment : Fragment() {
                 }
             }
         }
-
     }
 }

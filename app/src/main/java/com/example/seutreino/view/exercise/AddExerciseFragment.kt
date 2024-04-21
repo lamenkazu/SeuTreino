@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class AddExerciseFragment : Fragment() {
 
     val TAG: String = "AddExerciseFragment"
-    val viewModel: ExerciseViewModel by viewModels()
+    private val viewModel: ExerciseViewModel by viewModels()
 
     private var _binding: FragmentAddExerciseBinding? = null
     private val binding get() = _binding!!
@@ -72,9 +72,9 @@ class AddExerciseFragment : Fragment() {
     }
 
     private fun validation(): Boolean{
-        var isValid = true;
+        var isValid = true
 
-        if(binding.exerciseNameInput.text.toString().isNullOrEmpty()){
+        if(binding.exerciseNameInput.text.toString().isEmpty()){
             isValid = false
             toast("Enter Name")
         }

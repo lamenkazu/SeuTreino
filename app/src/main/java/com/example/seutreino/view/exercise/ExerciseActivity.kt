@@ -35,9 +35,9 @@ class ExerciseActivity : AppCompatActivity() {
 
         //Decide qual o grafico usar.
         val local = intent.extras?.getString("local")
-        if(local.equals("add")){
+        if(!local.equals("add")){
             val navInflater = navController.navInflater
-            val graph = navInflater.inflate(R.navigation.nav_graph)
+            val graph = navInflater.inflate(R.navigation.nav_graph2)
             navController.graph = graph
         }
 
