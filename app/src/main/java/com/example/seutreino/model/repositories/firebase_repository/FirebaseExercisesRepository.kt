@@ -35,6 +35,29 @@ class FirebaseExercisesRepository(
             }
     }
 
+    override fun getExerciseById(exerciseId: String, result: (UiState<Exercise>) -> Unit) {
+        database.collection(FirestoreTables.EXERCISES)
+            .document(exerciseId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val exercise = documentSnapshot.toObject(Exercise::class.java)
+                    if (exercise != null) {
+                        result.invoke(UiState.Success(exercise))
+                    } else {
+                        result.invoke(UiState.Failure("Error getting exercise data"))
+                    }
+                } else {
+                    result.invoke(UiState.Failure("Exercise with ID $exerciseId not found"))
+                }
+            }
+            .addOnFailureListener {
+                result.invoke(UiState.Failure(it.localizedMessage))
+            }
+
+
+    }
+
     override fun addExercise(exercise: Exercise, result: (UiState<String>) -> Unit) {
 
         val document = database.collection(FirestoreTables.EXERCISES).document()
@@ -45,6 +68,24 @@ class FirebaseExercisesRepository(
             .addOnSuccessListener {
                 result.invoke(
                     UiState.Success("Note has been created.")
+                )
+            }
+            .addOnFailureListener{
+                result.invoke(
+                    UiState.Failure(
+                        it.localizedMessage
+                    )
+                )
+            }
+    }
+
+    override fun updateExercise(exercise: Exercise, result: (UiState<String>) -> Unit) {
+        val document = database.collection(FirestoreTables.EXERCISES).document(exercise.id)
+
+        document.set(exercise)
+            .addOnSuccessListener {
+                result.invoke(
+                    UiState.Success("Note has been updated.")
                 )
             }
             .addOnFailureListener{

@@ -27,11 +27,19 @@ class ExerciseListingFragment : Fragment() {
     val adapter by lazy{
         ExerciseListingAdapter(
             onItemClicked = {pos, item ->
-
+                val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
+                    putExtra("ExerciseId", item.id)
+                    putExtra("edit", false)
+                }
+                startActivity(intent)
 
             },
             onEditClicked = {pos, item ->
-
+                val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
+                    putExtra("ExerciseId", item.id)
+                    putExtra("edit", true)
+                }
+                startActivity(intent)
             },
             onDeleteClicked = {pos, item ->
 
