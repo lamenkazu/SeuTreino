@@ -5,8 +5,8 @@ import com.google.firebase.firestore.ServerTimestamp
 import java.util.Date
 
 data class Workout(
-    var id: String,
-    val name: String,
-    val description: String,
-    val exercises: List<ExerciseWithDuration>
+    var id: String = "",
+    val name: String = "",
+    val description: String = "",
+    val exercises: List<ExerciseWithDuration> = arrayListOf()
 )

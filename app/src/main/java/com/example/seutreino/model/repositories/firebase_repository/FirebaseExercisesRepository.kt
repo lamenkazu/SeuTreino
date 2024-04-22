@@ -7,7 +7,7 @@ import com.example.seutreino.util.UiState
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseExercisesRepository(
-    val database: FirebaseFirestore
+    private val database: FirebaseFirestore
 ): IExercisesRepository {
     override fun getExercises(result: (UiState<List<Exercise>>) -> Unit) {
 

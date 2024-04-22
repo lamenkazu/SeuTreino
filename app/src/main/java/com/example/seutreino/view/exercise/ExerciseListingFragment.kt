@@ -32,7 +32,6 @@ class ExerciseListingFragment : Fragment() {
                 val intent = Intent(requireActivity(), ExerciseDetailActivity::class.java).apply{
                     putExtra("ExerciseId", item.id)
                     putExtra("edit", false)
-                    putExtra("local", "edit")
                 }
                 startActivity(intent)
 
@@ -41,7 +40,6 @@ class ExerciseListingFragment : Fragment() {
                 val intent = Intent(requireActivity(), ExerciseDetailActivity::class.java).apply{
                     putExtra("ExerciseId", item.id)
                     putExtra("edit", true)
-                    putExtra("local", "edit")
                 }
                 startActivity(intent)
             },
@@ -61,9 +59,7 @@ class ExerciseListingFragment : Fragment() {
         binding = FragmentExerciseListingBinding.inflate(layoutInflater)
 
         binding.addExerciseButton.setOnClickListener {
-            val intent = Intent(requireActivity(), ExerciseActivity::class.java).apply{
-                putExtra("local", "add")
-            }
+            val intent = Intent(requireActivity(), ExerciseActivity::class.java)
             startActivity(intent)
         }
 

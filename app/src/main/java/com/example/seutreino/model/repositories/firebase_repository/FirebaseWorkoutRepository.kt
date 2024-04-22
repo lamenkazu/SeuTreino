@@ -6,38 +6,34 @@ import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRe
 import com.example.seutreino.util.FirestoreTables
 import com.example.seutreino.util.UiState
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import java.util.Date
 
 class FirebaseWorkoutRepository(
-    val database: FirebaseFirestore
+    private val database: FirebaseFirestore
 ): IWorkoutsRepository {
-    override fun getWorkouts(): UiState<List<Workout>> {
-        val data = arrayListOf(
-            Workout(
-                id="123456",
-                name="Superior",
-                description="Trabalhar membros superiores",
-                exercises = arrayListOf(
-                    ExerciseWithDuration(exerciseId = "1", durationInSeconds = 30),
-                    ExerciseWithDuration(exerciseId = "2", durationInSeconds = 30),
-                )
-            ),
-            Workout(
-                id="123456",
-                name="Inferior",
-                description="Trabalhar membros inferiores",
-                exercises = arrayListOf(
-                    ExerciseWithDuration(exerciseId = "1", durationInSeconds = 30),
-                    ExerciseWithDuration(exerciseId = "2", durationInSeconds = 30),
-                )
-            ),
-        )
+    override fun getWorkouts(result: (UiState<List<Workout>>) -> Unit){
+        database.collection(FirestoreTables.WORKOUTS)
+            .get()
+            .addOnSuccessListener {
+                val workouts = arrayListOf<Workout>()
 
-        return if(data.isNullOrEmpty()){
-            UiState.Failure("Data is Empty")
-        }else{
-            UiState.Success(data)
-        }
+                for(document in it){
+                    val workout = document.toObject(Workout::class.java)
+                    workouts.add(workout)
+                }
+
+                result.invoke(
+                    UiState.Success(workouts)
+                )
+            }
+            .addOnFailureListener {
+                result.invoke(
+                    UiState.Failure(
+                        it.localizedMessage
+                    )
+                )
+            }
     }
 
     override fun addExercise(workout: Workout, result: (UiState<String>) -> Unit) {
@@ -58,5 +54,29 @@ class FirebaseWorkoutRepository(
                     )
                 )
             }
+    }
+
+    override fun deleteExercise(workout: Workout, result: (UiState<String>) -> Unit) {
+
+        val document = database
+            .collection(FirestoreTables.WORKOUTS)
+            .document(workout.id)
+
+        document.delete()
+            .addOnSuccessListener {
+                result.invoke(
+                    UiState.Success("Workout has been deleted.")
+                )
+            }
+            .addOnFailureListener {
+                result.invoke(
+                    UiState.Failure(
+                        it.localizedMessage
+                    )
+                )
+            }
+
+
+
     }
 }

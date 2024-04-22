@@ -9,14 +9,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
 import com.example.seutreino.R
 import com.example.seutreino.databinding.ActivityExerciseDetailBinding
 import com.example.seutreino.model.entities.Exercise
 import com.example.seutreino.util.UiState
 import com.example.seutreino.util.hide
 import com.example.seutreino.util.show
-import com.example.seutreino.util.toast
 import com.example.seutreino.view_model.ExerciseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ExerciseDetailActivity : AppCompatActivity() {
 
     val TAG: String = "ExerciseDetailActivity"
-    val viewModel: ExerciseViewModel by viewModels()
+    private val viewModel: ExerciseViewModel by viewModels()
 
     private lateinit var binding: ActivityExerciseDetailBinding
 
