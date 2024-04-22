@@ -15,7 +15,11 @@ class WorkoutViewModel @Inject constructor(
     private val repository: IWorkoutsRepository
 ): ViewModel() {
     private val _workouts = MutableLiveData<UiState<List<Workout>>>()
-    val exercises: LiveData<UiState<List<Workout>>> get() = _workouts
+    val workouts: LiveData<UiState<List<Workout>>> get() = _workouts
+
+    private val _addWorkout = MutableLiveData<UiState<String>>()
+    val addWorkout: LiveData<UiState<String>> get() = _addWorkout
+
 
     fun getWorkouts(){
         _workouts.value = UiState.Loading
@@ -24,5 +28,12 @@ class WorkoutViewModel @Inject constructor(
         android.os.Handler(Looper.getMainLooper()).postDelayed({
             _workouts.value = repository.getWorkouts()
         }, 2000)
+    }
+
+    fun addWorkout(workout: Workout) {
+        _addWorkout.value = UiState.Loading
+        repository.addExercise(workout){
+            _addWorkout.value = it
+        }
     }
 }

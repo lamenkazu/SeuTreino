@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.seutreino.databinding.FragmentWorkoutDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WorkoutDetailFragment : Fragment() {
 
     private var _binding: FragmentWorkoutDetailBinding? = null

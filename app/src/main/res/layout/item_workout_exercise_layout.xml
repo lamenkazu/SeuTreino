@@ -14,7 +14,7 @@
         android:padding="16dp"
         >
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/select_workout_exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,60 +93,6 @@
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
-
-
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/duration_layout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-
-<!--            android:maxWidth="10dp"-->
-<!--            android:minWidth="10dp"-->
-
-<!--            android:layout_marginHorizontal="10dp"-->
-
-
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_toEndOf="@id/workout_exercise_name"-->
-<!--            -->
-<!--            android:layout_toStartOf="@id/duration_unit_spinner"-->
-<!--            android:hint="Duração"-->
-
-
-<!--            >-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-
-<!--                android:id="@+id/duration"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-
-<!--                android:text="uai"-->
-
-<!--                />-->
-
-
-
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-
-<!--        <Spinner-->
-
-<!--            android:id="@+id/duration_unit_spinner"-->
-<!--            android:layout_width="90dp"-->
-<!--            android:layout_height="wrap_content"-->
-
-
-<!--            android:layout_alignParentEnd="true"-->
-
-<!--            android:layout_centerVertical="true"-->
-<!--            -->
-<!--            -->
-
-
-<!--            android:entries="@array/duration_unit_options"/>-->
-
 
     </RelativeLayout>
 

@@ -12,12 +12,12 @@
     <string name="exercise_name">Exercise name</string>
     <string name="observations">Observations</string>
     <string name="send_exercise">Save Exercise</string>
-    
+
     <string name="start_workout">Start</string>
     <string name="create_workout_label">Create New Workout</string>
     <string name="workout_name_label">Workout Name</string>
     <string name="workout_description_label">Workout Description</string>
-    <string name="avaible_exercises_label">Avaible Exercises:</string>
+    <string name="avaible_exercises_label">Available Exercises:</string>
     <string name="add_workout_label">Add Workout</string>
     <string name="update_workout_label">Update Workout</string>
     <string name="workout_exercises_label">Workout Exercises:</string>
@@ -27,7 +27,6 @@
         <item>Minutes</item>
         <item>Seconds</item>
     </string-array>
-
 
 
 </resources>

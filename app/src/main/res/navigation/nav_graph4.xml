@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.seutreino.view.workout.AddWorkoutFragment"
-        android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_add_workout">
 
         <action
@@ -18,7 +17,6 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.seutreino.view.workout.WorkoutDetailFragment"
-        android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_workout_detail">
 
         <action

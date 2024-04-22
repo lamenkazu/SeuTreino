@@ -1,18 +1,23 @@
 package com.example.seutreino.view.workout
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.seutreino.R
 import com.example.seutreino.databinding.ActivityWorkoutBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WorkoutActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+    val TAG: String = "WorkoutActivity"
+
     private lateinit var binding: ActivityWorkoutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,22 +26,35 @@ class WorkoutActivity : AppCompatActivity() {
         binding = ActivityWorkoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.workoutToolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_workout)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+
+        try {
+            val navController: NavController = findNavController(R.id.nav_host_fragment_content_workout);
+
+            val local = intent.extras?.getString("local")
+            if(!local.equals("add")){
+                val navInflater = navController.navInflater
+                val graph = navInflater.inflate(R.navigation.nav_graph4)
+                navController.graph = graph
+            }
+
+        } catch (e: Exception) {
+            // Handle error: NavController not found
+            e.printStackTrace();
+            // OR finish(); // Considerando fechar a atividade como alternativa
         }
+
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_workout)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        onBackPressed()
+        return true
     }
 }

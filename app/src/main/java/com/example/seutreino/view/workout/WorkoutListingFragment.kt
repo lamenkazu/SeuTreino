@@ -1,5 +1,6 @@
 package com.example.seutreino.view.workout
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -26,8 +27,15 @@ class WorkoutListingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-       binding = FragmentWorkoutListingBinding.inflate(layoutInflater)
+    ): View {
+        binding = FragmentWorkoutListingBinding.inflate(layoutInflater)
+
+        binding.addWorkoutButton.setOnClickListener {
+            val intent = Intent(requireActivity(), WorkoutActivity::class.java).apply {
+                putExtra("local", "add")
+            }
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -37,7 +45,7 @@ class WorkoutListingFragment : Fragment() {
 
         viewModel.getWorkouts()
 
-        viewModel.exercises.observe(viewLifecycleOwner){state ->
+        viewModel.workouts.observe(viewLifecycleOwner){state ->
             when(state){
                 is UiState.Loading -> {
                     Log.d(TAG, "Loading")
