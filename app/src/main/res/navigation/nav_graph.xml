@@ -6,23 +6,9 @@
     app:startDestination="@id/SecondFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.seutreino.view.exercise.ExerciseDetailFragment"
-        android:label="Detalhes"
-        tools:layout="@layout/fragment_exercise_detail">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.seutreino.view.exercise.AddExerciseFragment"
         android:label="Adicionar"
-        tools:layout="@layout/fragment_add_exercise">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_exercise"/>
 </navigation>
+

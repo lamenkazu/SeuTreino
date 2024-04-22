@@ -24,30 +24,14 @@ class ExerciseActivity : AppCompatActivity() {
         binding = ActivityExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.exerciseToolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_exercise)
-
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        //Decide qual o grafico usar.
-        val local = intent.extras?.getString("local")
-        if(!local.equals("add")){
-            val navInflater = navController.navInflater
-            val graph = navInflater.inflate(R.navigation.nav_graph2)
-            navController.graph = graph
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.title = ""
 
     }
 
     override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_exercise)
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-
         onBackPressed()
         return true
     }

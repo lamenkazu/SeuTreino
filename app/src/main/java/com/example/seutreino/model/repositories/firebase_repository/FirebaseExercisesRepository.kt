@@ -67,7 +67,7 @@ class FirebaseExercisesRepository(
         document.set(exercise)
             .addOnSuccessListener {
                 result.invoke(
-                    UiState.Success("Note has been created.")
+                    UiState.Success("Exercise has been created.")
                 )
             }
             .addOnFailureListener{
@@ -85,7 +85,7 @@ class FirebaseExercisesRepository(
         document.set(exercise)
             .addOnSuccessListener {
                 result.invoke(
-                    UiState.Success("Note has been updated.")
+                    UiState.Success("Exercise has been updated.")
                 )
             }
             .addOnFailureListener{
@@ -103,7 +103,7 @@ class FirebaseExercisesRepository(
         document.delete()
             .addOnSuccessListener {
                 result.invoke(
-                    UiState.Success("Note has been deleted.")
+                    UiState.Success("Exercise has been deleted.")
                 )
             }
             .addOnFailureListener{

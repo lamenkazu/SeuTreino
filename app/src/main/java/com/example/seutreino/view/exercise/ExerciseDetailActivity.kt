@@ -2,12 +2,16 @@ package com.example.seutreino.view.exercise
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
-import com.example.seutreino.databinding.FragmentExerciseDetailBinding
+import com.example.seutreino.R
+import com.example.seutreino.databinding.ActivityExerciseDetailBinding
 import com.example.seutreino.model.entities.Exercise
 import com.example.seutreino.util.UiState
 import com.example.seutreino.util.hide
@@ -17,33 +21,39 @@ import com.example.seutreino.view_model.ExerciseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ExerciseDetailFragment : Fragment() {
+class ExerciseDetailActivity : AppCompatActivity() {
 
-    val TAG: String = "ExerciseDetailFragment"
+    val TAG: String = "ExerciseDetailActivity"
     val viewModel: ExerciseViewModel by viewModels()
 
-    private var _binding: FragmentExerciseDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityExerciseDetailBinding
 
     private lateinit var id: String
     private var isEdit: Boolean = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        binding = ActivityExerciseDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        _binding = FragmentExerciseDetailBinding.inflate(inflater, container, false)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
-        id = requireActivity().intent.extras?.getString("ExerciseId")!!
-        isEdit = requireActivity().intent.extras?.getBoolean("edit")!!
+        id = intent.extras?.getString("ExerciseId")!!
+        isEdit = intent.extras?.getBoolean("edit")!!
 
-        return binding.root
+        Log.d(TAG, id)
+        Log.d(TAG, isEdit.toString())
 
-    }
+        setSupportActionBar(binding.exerciseToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.title = ""
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
 
         if(!isEdit){
             binding.updateExerciseButton.visibility = View.GONE
@@ -72,7 +82,7 @@ class ExerciseDetailFragment : Fragment() {
                 }
             }
 
-            viewModel.updateExercise.observe(viewLifecycleOwner){state ->
+            viewModel.updateExercise.observe(this){state ->
                 when(state){
                     is UiState.Loading -> {
                         binding.progressBar.show()
@@ -81,13 +91,14 @@ class ExerciseDetailFragment : Fragment() {
 
                     is UiState.Failure -> {
                         binding.progressBar.hide()
-                        toast(state.error.toString())
+                        Toast.makeText(this, state.error.toString(), Toast.LENGTH_SHORT).show()
                     }
 
                     is UiState.Success -> {
                         binding.progressBar.hide()
 
-                        toast(state.data)
+                        Toast.makeText(this, state.data, Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -96,7 +107,7 @@ class ExerciseDetailFragment : Fragment() {
 
         viewModel.getExerciseById(id)
 
-        viewModel.exercise.observe(viewLifecycleOwner){state ->
+        viewModel.exercise.observe(this){state ->
             when(state){
                 is UiState.Loading -> {
                     binding.progressBar.show()
@@ -105,7 +116,8 @@ class ExerciseDetailFragment : Fragment() {
 
                 is UiState.Failure -> {
                     binding.progressBar.hide()
-                    toast(state.error.toString())
+                    Toast.makeText(this, state.error.toString(), Toast.LENGTH_SHORT).show()
+
                 }
 
                 is UiState.Success -> {
@@ -121,23 +133,24 @@ class ExerciseDetailFragment : Fragment() {
         }
 
 
+
     }
+
 
     private fun validation(): Boolean{
         var isValid = true;
 
         if(binding.exerciseName.text.toString().isEmpty()){
             isValid = false
-            toast("Cant Save Without a Name")
+
+            Toast.makeText(this, "Cant Save Without a Name", Toast.LENGTH_SHORT).show()
         }
 
         return isValid;
     }
 
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
