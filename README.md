@@ -47,3 +47,10 @@
 
 ## Organização
 ![img.png](img.png)
+
+## TODO
+Vários problemas inesperados afetaram a aplicação, então algumas coisas não foram completadas. Elas não serão entregues no prazo limite, porém serão feitas posteriormente para adicionar o projeto ao meu portifólio.
+- A data do treino deveria ser implementada após iniciar um treino. Esse histórico de treinos deveria ter sido salvo no banco de dados Firestore, e então exibida uma tela de histórico. No estado atual da aplicação, não há histórico de exercícios feitos, há apenas como fazer exercícios sem salvar o histórico.
+- A edição de um treino não foi implementada. É possível apenas criar, utilizar, e deletar um treino. Outras funcionalidades foram priorizadas, como o countdown dos exercícios de um treino.
+
+Entendo que a incompletude dos requisitos mencionados acima pode afetar minha chance de aprovação, porém creio que as coisas a mais que fiz compensem essa falta. Ainda essa semana eu com certeza vou terminar toda a aplicação, e mesmo que eu não seja aprovado, tenho certeza que esse app me proporcionou grande evolução e que sua presença no meu portfólio será engrandecedora. Obrigado dese já!
