@@ -18,11 +18,12 @@
 
         android:textStyle="bold"
         android:textSize="52sp"
+        android:textColor="@color/black"
 
         android:layout_centerHorizontal="true"
         />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,13 +36,14 @@
         android:text="@string/sign_in_label"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
 
 
         android:layout_below="@id/welcome_label"
 
         />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/sign_un_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

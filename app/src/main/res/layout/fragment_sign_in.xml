@@ -60,12 +60,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/sign_password"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -79,6 +80,23 @@
             android:layout_marginTop="64dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_layout"
+            />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:indeterminateTint="@color/white"
+
+            app:layout_constraintTop_toTopOf="@id/sign_in_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="10dp"
+            android:layout_marginTop="5dp"
+
+            android:visibility="gone"
+
             />
 
 

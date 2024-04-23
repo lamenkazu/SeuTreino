@@ -76,13 +76,9 @@ class SignUpFragment : Fragment() {
 
                     findNavController().navigate(R.id.welcomeFragment)
 
-
                 }
-
-
             }
         }
-
     }
 
     private fun getUserObj(): User{

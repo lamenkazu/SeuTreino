@@ -87,8 +87,30 @@ class FirebaseAuthRepository(
             }
     }
 
-    override fun signInUser(user: User, result: (UiState<String>) -> Unit) {
-        TODO("Not yet implemented")
+    override fun signInUser(email: String, password: String, result: (UiState<String>) -> Unit) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener{
+                if(it.isSuccessful){
+                    result.invoke(
+                        UiState.Success(
+                            "Login Successfull!"
+                        )
+                    )
+                }else{
+                    result.invoke(
+                        UiState.Failure(
+                            "Authentication Failed, check email and password."
+                        )
+                    )
+                }
+            }
+            .addOnFailureListener {
+                result.invoke(
+                    UiState.Failure(
+                        it.localizedMessage
+                    )
+                )
+            }
     }
 
     override fun forgotPassword(user: User, result: (UiState<String>) -> Unit) {
