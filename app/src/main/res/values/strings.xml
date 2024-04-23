@@ -30,6 +30,7 @@
     <string name="time_seconds_measure">s</string>
     <string name="pause_label">Pause</string>
     <string name="start_label">Start</string>
+    <string name="interrupt_label">Interrupt</string>
 
 
 
