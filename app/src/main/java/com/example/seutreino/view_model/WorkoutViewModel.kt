@@ -4,6 +4,7 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.seutreino.model.entities.Exercise
 import com.example.seutreino.model.entities.Workout
 import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRepository
 import com.example.seutreino.util.UiState
@@ -23,7 +24,8 @@ class WorkoutViewModel @Inject constructor(
     private val _deleteWorkout = MutableLiveData<UiState<String>>()
     val deleteWorkout: LiveData<UiState<String>> get() = _deleteWorkout
 
-
+    private val _workout = MutableLiveData<UiState<Workout>>()
+    val workout: LiveData<UiState<Workout>> get() = _workout
 
     fun getWorkouts(){
         _workouts.value = UiState.Loading
@@ -44,6 +46,14 @@ class WorkoutViewModel @Inject constructor(
         _deleteWorkout.value = UiState.Loading
         repository.deleteExercise(workout){
             _deleteWorkout.value = it
+        }
+    }
+
+    fun getWorkoutById(id: String) {
+        _workout.value = UiState.Loading
+
+        repository.getWorkoutById(id){
+            _workout.value = it
         }
     }
 }

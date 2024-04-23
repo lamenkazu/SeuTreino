@@ -8,5 +8,6 @@ interface IWorkoutsRepository {
     fun getWorkouts(result: (UiState<List<Workout>>) -> Unit)
     fun addExercise(workout: Workout, result: (UiState<String>) -> Unit)
     fun deleteExercise(workout: Workout, result: (UiState<String>) -> Unit)
+    fun getWorkoutById(workoutId: String, result: (UiState<Workout>) -> Unit)
 
 }

@@ -79,4 +79,41 @@ class FirebaseWorkoutRepository(
 
 
     }
+
+    override fun getWorkoutById(workoutId: String, result: (UiState<Workout>) -> Unit) {
+        database.collection(FirestoreTables.WORKOUTS)
+            .document(workoutId)
+            .get()
+            .addOnSuccessListener {
+                if(it.exists()){
+                    val workout = it.toObject(Workout::class.java)
+
+                    if(workout != null){
+                        result.invoke(
+                            UiState.Success(workout)
+                        )
+                    } else {
+                        result.invoke(
+                            UiState.Failure("Error getting workout data")
+                        )
+                    }
+                }else {
+                    result.invoke(UiState.Failure("Workout with ID $workoutId not found"))
+                }
+            }
+            .addOnFailureListener {
+                result.invoke(
+                    UiState.Failure(it.localizedMessage)
+                )
+            }
+    }
 }
+
+
+
+
+
+
+
+
+
