@@ -36,4 +36,8 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun logout(result: () -> Unit){
+        repository.signOutUser(result)
+    }
+
 }

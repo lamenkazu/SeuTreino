@@ -117,4 +117,9 @@ class FirebaseAuthRepository(
         TODO("Not yet implemented")
     }
 
+    override fun signOutUser(result: () -> Unit) {
+        auth.signOut()
+        result.invoke()
+    }
+
 }

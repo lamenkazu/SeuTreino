@@ -8,5 +8,6 @@ interface IAuthRepository {
     fun updateUserInfo(user: User, result: (UiState<String>) -> Unit)
     fun signInUser(email: String, password: String, result: (UiState<String>) -> Unit)
     fun forgotPassword(user: User, result: (UiState<String>) -> Unit)
+    fun signOutUser(result: () -> Unit)
 
 }

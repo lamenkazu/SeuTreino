@@ -73,6 +73,7 @@ class SignInFragment : Fragment() {
                     toast(state.data)
 
                     findNavController().navigate(R.id.action_signInFragment_to_mainActivity)
+                    requireActivity().supportFragmentManager.popBackStack()
 
                 }
             }
