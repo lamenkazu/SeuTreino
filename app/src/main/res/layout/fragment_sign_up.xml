@@ -44,30 +44,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/birthdate_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name_layout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/birthdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/sign_birthday"
-                    android:inputType="date"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/birthdate_layout">
+                app:layout_constraintTop_toBottomOf="@id/name_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
@@ -92,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -110,12 +92,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/sign_confirm_password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/register_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -130,6 +113,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/confirm_password_layout"
                 />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:indeterminateTint="@color/black"
+
+                app:layout_constraintTop_toTopOf="@id/register_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:elevation="10dp"
+                android:layout_marginTop="5dp"
+
+                android:visibility="gone"
+
+                 />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

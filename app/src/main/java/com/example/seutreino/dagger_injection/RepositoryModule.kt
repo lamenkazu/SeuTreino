@@ -1,9 +1,12 @@
 package com.example.seutreino.dagger_injection
 
+import com.example.seutreino.model.repositories.firebase_repository.FirebaseAuthRepository
 import com.example.seutreino.model.repositories.firebase_repository.FirebaseExercisesRepository
 import com.example.seutreino.model.repositories.firebase_repository.FirebaseWorkoutRepository
+import com.example.seutreino.model.repositories.interface_repository.IAuthRepository
 import com.example.seutreino.model.repositories.interface_repository.IExercisesRepository
 import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRepository
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
@@ -29,6 +32,15 @@ object RepositoryModule {
         database: FirebaseFirestore
     ): IWorkoutsRepository{
         return FirebaseWorkoutRepository(database)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthsRepository(
+        database: FirebaseFirestore,
+        auth: FirebaseAuth
+    ): IAuthRepository{
+        return FirebaseAuthRepository(database, auth)
     }
 
 }

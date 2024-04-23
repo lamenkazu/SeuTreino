@@ -42,6 +42,10 @@
     <string name="sign_password">Password</string>
     <string name="sign_confirm_password">Confirm Password</string>
 
+    <string name="empty_field_warning">All fields must be filled.</string>
+    <string name="invalid_email_warning">Invalid email given.</string>
+    <string name="invalid_password_match">Password and confirm password do not match.</string>
+
 
 
 
