@@ -32,6 +32,29 @@
     <string name="start_label">Start</string>
     <string name="interrupt_label">Interrupt</string>
 
+    <string name="welcome_label">Welcome</string>
+    <string name="sign_in_label">Login</string>
+    <string name="sign_up_label">Register</string>
+    <string name="sign_out_label">Logout</string>
+
+    <string name="sign_name">Name</string>
+    <string name="sign_birthday">Birthday</string>
+    <string name="sign_email">Email</string>
+    <string name="sign_password">Password</string>
+    <string name="sign_confirm_password">Confirm Password</string>
+
+    <string name="empty_field_warning">All fields must be filled.</string>
+    <string name="invalid_email_warning">Invalid email given.</string>
+    <string name="invalid_password_warning">Password must have at least 8 characters.</string>
+    <string name="invalid_password_match">Password and confirm password do not match.</string>
+
+    <string name="name_label">Name:</string>
+    <string name="email_label">Email:</string>
+
+
+
+
+
 
 
 </resources>

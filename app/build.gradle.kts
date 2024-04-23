@@ -56,6 +56,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -64,7 +67,6 @@ dependencies {
     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-//    annotationProcessor ("com.google.dagger:hilt-compiler:2.51.1")
 
     //Jetpack Navigation Component
     implementation(libs.androidx.navigation.fragment.ktx)
@@ -76,4 +78,8 @@ dependencies {
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth)
+
+    // Gson
+    implementation(libs.gson)
 }
