@@ -1,5 +1,6 @@
 package com.example.seutreino.dagger_injection
 
+import android.content.SharedPreferences
 import com.example.seutreino.model.repositories.firebase_repository.FirebaseAuthRepository
 import com.example.seutreino.model.repositories.firebase_repository.FirebaseExercisesRepository
 import com.example.seutreino.model.repositories.firebase_repository.FirebaseWorkoutRepository
@@ -8,6 +9,7 @@ import com.example.seutreino.model.repositories.interface_repository.IExercisesR
 import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,9 +40,11 @@ object RepositoryModule {
     @Singleton
     fun provideAuthsRepository(
         database: FirebaseFirestore,
-        auth: FirebaseAuth
+        auth: FirebaseAuth,
+        appPreferences: SharedPreferences,
+        gson: Gson
     ): IAuthRepository{
-        return FirebaseAuthRepository(database, auth)
+        return FirebaseAuthRepository(database, auth, appPreferences, gson)
     }
 
 }
