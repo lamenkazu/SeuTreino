@@ -31,7 +31,7 @@ class AddWorkoutFragment : Fragment() {
     private var _binding: FragmentAddWorkoutBinding? = null
     private val binding get() = _binding!!
 
-    val adapter by lazy{
+    private val adapter by lazy{
         AddWorkoutExerciseListingAdapter(
             onItemSelectionChanged = {exerciseId, isSelected ->},
         )

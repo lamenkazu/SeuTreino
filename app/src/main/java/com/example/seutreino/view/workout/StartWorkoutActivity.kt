@@ -179,7 +179,7 @@ class StartWorkoutActivity : AppCompatActivity() {
 
                 val currentExercise = adapter.getNextExercise()
                 if (currentExercise != null) {
-                    startCountdown(currentExercise.durationInSeconds * 1000L, currentExercise)
+                    startCountdown((currentExercise.durationInSeconds + 1)* 1000L, currentExercise)
                 }
             } else {
                 isWorkoutStarted = false
@@ -203,7 +203,7 @@ class StartWorkoutActivity : AppCompatActivity() {
     private fun startCountdown(durationInMillis: Long, currentExercise: ExerciseWithDuration) {
         countdownTimer = object : CountDownTimer(durationInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                val remainingSeconds = millisUntilFinished / 1000
+                val remainingSeconds = millisUntilFinished  / 1000
 
                 val minutes = remainingSeconds / 60
                 val seconds = remainingSeconds % 60
@@ -222,7 +222,7 @@ class StartWorkoutActivity : AppCompatActivity() {
                 val nextExerciseIndex = adapter.list.indexOf(currentExercise) + 1
                 if (nextExerciseIndex < adapter.list.size) {
                     val nextExercise = adapter.list[nextExerciseIndex]
-                    startCountdown(nextExercise.durationInSeconds * 1000L, nextExercise)
+                    startCountdown((nextExercise.durationInSeconds + 1) * 1000L, nextExercise)
 
                 } else {  // Todos os exercícios foram completos.
 
