@@ -32,6 +32,17 @@
     <string name="start_label">Start</string>
     <string name="interrupt_label">Interrupt</string>
 
+    <string name="welcome_label">Welcome</string>
+    <string name="sign_in_label">Login</string>
+    <string name="sign_up_label">Register</string>
+
+    <string name="sign_name">Name</string>
+    <string name="sign_birthday">Birthday</string>
+    <string name="sign_email">Email</string>
+    <string name="sign_password">Password</string>
+    <string name="sign_confirm_password">Confirm Password</string>
+
+
 
 
 </resources>
