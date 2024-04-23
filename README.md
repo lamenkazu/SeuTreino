@@ -1,5 +1,9 @@
 # Seu Treino App
 
+## Executar código:
+Para rodar o app, vai ser necessário criar seu próprio projeto firebase e adicionar o arquivo google-services.json dentro da pasta app. Esse arquivo não foi disponibilizado por motivos de segurança da chave da API.
+No entanto, é possível [baixar o APK](https://github.com/lamenkazu/SeuTreino/releases/tag/v0.0.1) da aplicação que utiliza a minha chave da API para explorar a aplicação.
+
 ## Requisitos funcionais
 ### Gerenciamento de Treinos:
 - [x] Deve ser possível criar um treino*
