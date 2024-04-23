@@ -55,13 +55,18 @@
 
         />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/update_exercise_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
 
-        android:text="Atualizar"
+        android:text="@string/update_exercise_label"
+
+        android:textSize="21sp"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/black"
+        android:textStyle="bold"
 
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
