@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+
+    android:id="@+id/exercise_item_layout"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+
+    <ImageView
+        android:id="@+id/exercise_image"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="16dp"
+
+        android:layout_alignParentStart="true"
+ />
+
+    <TextView
+        android:id="@+id/exercise_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+
+
+        android:text="Exemplo"
+
+        android:layout_toRightOf="@id/exercise_image"
+        />
+
+    <TextView
+        android:id="@+id/exercise_observations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+
+
+        android:layout_below="@id/exercise_title"
+        android:layout_toEndOf="@id/exercise_image"
+
+        android:text="exemplos blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla"
+
+
+        />
+
+
+        <LinearLayout  android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/exercise_observations"
+            android:layout_marginTop="10dp"
+
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/baseline_edit_24"
+
+                app:backgroundTint="@color/black"
+                />
+
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/baseline_delete_outline_24"
+                app:backgroundTint="@color/red"
+                />
+
+
+        </LinearLayout>
+
+</RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

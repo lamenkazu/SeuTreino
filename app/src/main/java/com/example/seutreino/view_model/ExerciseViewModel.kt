@@ -1,6 +1,5 @@
 package com.example.seutreino.view_model
 
-import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,14 +17,59 @@ class ExerciseViewModel @Inject constructor(
     private val _exercises = MutableLiveData<UiState<List<Exercise>>>()
     val exercises: LiveData<UiState<List<Exercise>>> get() = _exercises
 
+    private val _exercise = MutableLiveData<UiState<Exercise>>()
+    val exercise: LiveData<UiState<Exercise>> get() = _exercise
+
+    private val _addExercise = MutableLiveData<UiState<String>>()
+    val addExercise: LiveData<UiState<String>> get() = _addExercise
+
+    private val _updateExercise = MutableLiveData<UiState<String>>()
+    val updateExercise: LiveData<UiState<String>> get() = _updateExercise
+
+    private val _deleteExercise = MutableLiveData<UiState<String>>()
+    val deleteExercise: LiveData<UiState<String>> get() = _deleteExercise
+
+
     fun getExercises(){
         _exercises.value = UiState.Loading
 
-        //2 segundos para simular o delay de informações do BD
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
-            _exercises.value = repository.getExercises()
-        }, 2000)
+        repository.getExercises {
+            _exercises.value = it
+        }
 
+    }
+
+    fun getExerciseById(id: String){
+        _exercise.value = UiState.Loading
+
+        repository.getExerciseById(id){
+            _exercise.value = it
+
+        }
+
+    }
+
+    fun addExercise(exercise: Exercise){
+        _addExercise.value = UiState.Loading
+        repository.addExercise(exercise){
+            _addExercise.value = it
+        }
+
+    }
+
+    fun updateExercise(exercise: Exercise){
+        _updateExercise.value = UiState.Loading
+        repository.updateExercise(exercise){
+            _updateExercise.value = it
+        }
+
+    }
+
+    fun deleteExercise(exercise: Exercise) {
+        _deleteExercise.value = UiState.Loading
+        repository.deleteExercise(exercise){
+            _deleteExercise.value = it
+        }
     }
 
 }

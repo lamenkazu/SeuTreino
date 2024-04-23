@@ -15,14 +15,35 @@ class WorkoutViewModel @Inject constructor(
     private val repository: IWorkoutsRepository
 ): ViewModel() {
     private val _workouts = MutableLiveData<UiState<List<Workout>>>()
-    val exercises: LiveData<UiState<List<Workout>>> get() = _workouts
+    val workouts: LiveData<UiState<List<Workout>>> get() = _workouts
+
+    private val _addWorkout = MutableLiveData<UiState<String>>()
+    val addWorkout: LiveData<UiState<String>> get() = _addWorkout
+
+    private val _deleteWorkout = MutableLiveData<UiState<String>>()
+    val deleteWorkout: LiveData<UiState<String>> get() = _deleteWorkout
+
+
 
     fun getWorkouts(){
         _workouts.value = UiState.Loading
 
-        //2 segundos para simular o delay de informações do BD
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
-            _workouts.value = repository.getWorkouts()
-        }, 2000)
+        repository.getWorkouts(){
+            _workouts.value = it
+        }
+    }
+
+    fun addWorkout(workout: Workout) {
+        _addWorkout.value = UiState.Loading
+        repository.addExercise(workout){
+            _addWorkout.value = it
+        }
+    }
+
+    fun deleteWorkout(workout: Workout) {
+        _deleteWorkout.value = UiState.Loading
+        repository.deleteExercise(workout){
+            _deleteWorkout.value = it
+        }
     }
 }

@@ -19,22 +19,11 @@
         android:id="@+id/exerciseDetailFragment"
         android:name="com.example.seutreino.view.exercise.ExerciseDetailFragment"
         android:label="fragment_exercise_detail"
-        tools:layout="@layout/fragment_exercise_detail" />
-
-
-    <fragment
-        android:id="@+id/workoutListingFragment"
-        android:name="com.example.seutreino.view.workout.WorkoutListingFragment"
-        android:label="fragment_workout_listing"
-        tools:layout="@layout/fragment_workout_listing" >
+        tools:layout="@layout/fragment_exercise_detail" >
         <action
-            android:id="@+id/action_workoutListingFragment_to_workoutDetailFragment"
-            app:destination="@id/workoutDetailFragment" />
+            android:id="@+id/action_exerciseDetailFragment_to_exerciseListingFragment"
+            app:destination="@id/exerciseListingFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/workoutDetailFragment"
-        android:name="com.example.seutreino.view.workout.WorkoutDetailFragment"
-        android:label="fragment_workout_detail"
-        tools:layout="@layout/fragment_workout_detail" />
+
 </navigation>

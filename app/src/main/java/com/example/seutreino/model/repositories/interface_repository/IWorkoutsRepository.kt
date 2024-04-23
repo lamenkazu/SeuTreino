@@ -5,6 +5,8 @@ import com.example.seutreino.util.UiState
 
 interface IWorkoutsRepository {
 
-    fun getWorkouts(): UiState<List<Workout>>
+    fun getWorkouts(result: (UiState<List<Workout>>) -> Unit)
+    fun addExercise(workout: Workout, result: (UiState<String>) -> Unit)
+    fun deleteExercise(workout: Workout, result: (UiState<String>) -> Unit)
 
 }

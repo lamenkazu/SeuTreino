@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+
+    android:id="@+id/workout_exercise_item_layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/select_workout_exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/workout_exercise_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toEndOf="@id/select_workout_exercise"
+            android:layout_centerInParent="true"
+
+
+            android:ellipsize="end"
+            android:maxLines="1"
+
+            android:text="Abdominal fudidamente dificil"
+
+            android:maxWidth="200dp"
+            android:minWidth="200dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_alignParentEnd="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/minutes_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="15dp"
+
+
+                    android:textSize="24sp"
+
+
+                    android:text="00"
+                    />
+
+                <TextView
+                    android:id="@+id/time_separator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerInParent="true"
+
+                    android:layout_toEndOf="@id/minutes_selector"
+
+                    android:textSize="18sp"
+                    android:text=":"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/seconds_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_toEndOf="@id/time_separator"
+
+
+                    android:textSize="24sp"
+
+                    android:text="00"
+                    />
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
