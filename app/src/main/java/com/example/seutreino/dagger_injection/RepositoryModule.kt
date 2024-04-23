@@ -9,6 +9,7 @@ import com.example.seutreino.model.repositories.interface_repository.IExercisesR
 import com.example.seutreino.model.repositories.interface_repository.IWorkoutsRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.StorageReference
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -23,9 +24,10 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideExercisesRepository(
-        database: FirebaseFirestore
+        database: FirebaseFirestore,
+        storageReference: StorageReference
     ): IExercisesRepository{
-        return FirebaseExercisesRepository(database)
+        return FirebaseExercisesRepository(database, storageReference)
     }
 
     @Provides

@@ -2,7 +2,9 @@ package com.example.seutreino.view.exercise
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.seutreino.databinding.ItemExerciseLayoutBinding
 import com.example.seutreino.model.entities.Exercise
 
@@ -42,7 +44,11 @@ class ExerciseListingAdapter(
 
     inner class MyViewHolder(val binding: ItemExerciseLayoutBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item: Exercise){
-            // TODO binding.exerciseImage
+            val imageUrl = item.image.toUri()
+            Glide.with(binding.root.context)
+                .load(imageUrl)
+                .into(binding.exerciseImage)
+
             binding.exerciseTitle.text = item.name
             binding.exerciseObservations.text = item.observations
             binding.editButton.setOnClickListener{onEditClicked.invoke(adapterPosition, item)}

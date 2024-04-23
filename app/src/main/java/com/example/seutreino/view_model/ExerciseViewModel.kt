@@ -1,12 +1,15 @@
 package com.example.seutreino.view_model
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.seutreino.model.entities.Exercise
 import com.example.seutreino.model.repositories.interface_repository.IExercisesRepository
 import com.example.seutreino.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -49,9 +52,9 @@ class ExerciseViewModel @Inject constructor(
 
     }
 
-    fun addExercise(exercise: Exercise){
+    fun addExercise(exercise: Exercise, imageUrl: Uri){
         _addExercise.value = UiState.Loading
-        repository.addExercise(exercise){
+        repository.addExercise(exercise, imageUrl){
             _addExercise.value = it
         }
 
@@ -69,6 +72,14 @@ class ExerciseViewModel @Inject constructor(
         _deleteExercise.value = UiState.Loading
         repository.deleteExercise(exercise){
             _deleteExercise.value = it
+        }
+    }
+
+    fun onUploadSingleFile(fileUri: Uri, onResult: (UiState<Uri>) -> Unit){
+        onResult.invoke(UiState.Loading)
+
+        viewModelScope.launch {
+            repository.uploadSingleFile(fileUri, onResult)
         }
     }
 

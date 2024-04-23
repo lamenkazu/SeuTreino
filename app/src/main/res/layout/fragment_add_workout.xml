@@ -99,18 +99,18 @@
         />
 
 
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/add_workout_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="10dp"
 
-        app:backgroundTint="@color/orange"
-        android:textColor="@color/black"
+        app:backgroundTint="@color/green"
+        android:textColor="@color/white"
 
         android:text="@string/add_workout_label"
-        android:textSize="18sp"
+        android:textSize="21sp"
         android:textStyle="bold"
 
         android:layout_marginBottom="20dp"

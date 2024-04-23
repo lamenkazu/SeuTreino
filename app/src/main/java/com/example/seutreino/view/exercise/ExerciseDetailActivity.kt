@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.seutreino.R
 import com.example.seutreino.databinding.ActivityExerciseDetailBinding
 import com.example.seutreino.model.entities.Exercise
@@ -122,6 +124,11 @@ class ExerciseDetailActivity : AppCompatActivity() {
                     binding.progressBar.hide()
 
                     Log.d(TAG, state.data.toString())
+
+                    val imageUrl = state.data.image.toUri()
+                    Glide.with(binding.root.context)
+                        .load(imageUrl)
+                        .into(binding.exerciseImage)
 
                     binding.exerciseName.setText(state.data.name)
                     binding.exerciseObservations.setText(state.data.observations)

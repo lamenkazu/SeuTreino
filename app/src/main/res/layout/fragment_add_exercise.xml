@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
-            android:src="@drawable/baseline_image_24"/>
+            android:src="@drawable/baseline_image_24"
+            android:contentDescription="TODO" />
 
     </androidx.cardview.widget.CardView>
 
@@ -43,13 +44,19 @@
         app:maxLines="5"
         tools:layout_editor_absoluteX="16dp" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/submit_exercise_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|end"
         android:layout_margin="16dp"
+
         android:text="@string/send_exercise"
+        android:textStyle="bold"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

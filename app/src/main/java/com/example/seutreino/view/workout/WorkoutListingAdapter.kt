@@ -8,7 +8,6 @@ import com.example.seutreino.model.entities.Workout
 
 class WorkoutListingAdapter(
     val onItemClicked: (Int, Workout) -> Unit,
-    val onEditClicked: (Int, Workout) -> Unit,
     val onDeleteClicked: (Int, Workout) -> Unit,
     val onStartClicked: (Int, Workout) -> Unit,
 ):  RecyclerView.Adapter<WorkoutListingAdapter.MyViewHolder>(){
@@ -51,9 +50,6 @@ class WorkoutListingAdapter(
 
             binding.workoutItemLayout.setOnClickListener{
                 onItemClicked.invoke(adapterPosition, item)
-            }
-            binding.editButton.setOnClickListener{
-                onEditClicked.invoke(adapterPosition, item)
             }
 
             binding.deleteButton.setOnClickListener{

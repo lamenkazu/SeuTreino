@@ -19,6 +19,7 @@
     <string name="avaible_exercises_label">Available Exercises:</string>
     <string name="add_workout_label">Add Workout</string>
     <string name="update_workout_label">Update Workout</string>
+    <string name="update_exercise_label">Update Exercise</string>
     <string name="workout_exercises_label">Workout Exercises:</string>
     <string name="workout_details_label">Workout Details</string>
 
