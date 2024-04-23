@@ -49,8 +49,10 @@
 ![img.png](img.png)
 
 ## TODO
-Vários problemas inesperados afetaram a aplicação, então algumas coisas não foram completadas. Elas não serão entregues no prazo limite, porém serão feitas posteriormente para adicionar o projeto ao meu portifólio.
-- A data do treino deveria ser implementada após iniciar um treino. Esse histórico de treinos deveria ter sido salvo no banco de dados Firestore, e então exibida uma tela de histórico. No estado atual da aplicação, não há histórico de exercícios feitos, há apenas como fazer exercícios sem salvar o histórico.
-- A edição de um treino não foi implementada. É possível apenas criar, utilizar, e deletar um treino. Outras funcionalidades foram priorizadas, como o countdown dos exercícios de um treino.
+Durante o desenvolvimento, enfrentei alguns problemas inesperados que impactaram a conclusão de algumas funcionalidades. Infelizmente, algumas delas não foram concluídas dentro do prazo estabelecido. No entanto, quero assegurar que essas pendências serão tratadas e implementadas posteriormente para enriquecer ainda mais o meu portfólio com este projeto, e que não foram feitas por falta de capacidade.
 
-Entendo que a incompletude dos requisitos mencionados acima pode afetar minha chance de aprovação, porém creio que as coisas a mais que fiz compensem essa falta. Ainda essa semana eu com certeza vou terminar toda a aplicação, e mesmo que eu não seja aprovado, tenho certeza que esse app me proporcionou grande evolução e que sua presença no meu portfólio será engrandecedora. Obrigado dese já!
+- Uma das funcionalidades que não foi concluída conforme planejado é a integração da data de treinamento, que deveria ser registrada após iniciar um treino. Além disso, o histórico de treinamentos, que deveria ser armazenado no banco de dados Firestore e posteriormente exibido em uma tela dedicada, ainda não está disponível na aplicação. Até o momento, apenas a funcionalidade de realizar exercícios sem a devida persistência do histórico está implementada.
+
+- Outro ponto que não foi finalizado é a capacidade de editar um treino já criado. Atualmente, somente é possível criar, utilizar e excluir um treino. Isso se deve ao fato de ter sido priorizado outras funcionalidades, como o cronômetro para os exercícios dentro de um treino.
+
+Reconheço que a falta de conclusão desses requisitos pode influenciar negativamente na minha avaliação para esta oportunidade. No entanto, estou confiante de que os esforços adicionais que investi nesta aplicação compensam essas lacunas. Estou comprometido a concluir todas as pendências até o final desta semana. Mesmo que não seja selecionado para avançar neste processo seletivo, acredito que este projeto representou uma significativa evolução para mim, e estou certo de que sua inclusão no meu portfólio será valorizada. Agradeço desde já pela compreensão e pela oportunidade!
