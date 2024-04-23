@@ -37,13 +37,6 @@ class WorkoutListingFragment : Fragment() {
 //                startActivity(intent)
 
             },
-            onEditClicked = {_, item ->
-//                val intent = Intent(requireActivity(), ExerciseDetailActivity::class.java).apply{
-//                    putExtra("ExerciseId", item.id)
-//                    putExtra("edit", true)
-//                }
-//                startActivity(intent)
-            },
             onDeleteClicked = {pos, item ->
                 viewModel.deleteWorkout(item)
                 deleteWorkoutPosition = pos
